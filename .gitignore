@@ -1,0 +1,13 @@
+## Git Ignore
+bin/
+obj/
+.vs/
+.vscode/
+*.db
+*.db-shm
+*.db-wal
+*.user
+appsettings.Development.json
+.env.local
+.env.*.local
+/Properties/launchSettings.json
