@@ -49,8 +49,7 @@ app.UseAuthorization();
 
 app.MapGet("/health", () => Results.Ok("OK"));
 
-app.MapRazorComponents<App>()
-    .AddInteractiveServerRenderMode();
+app.MapGet("/", () => Results.Ok("Community Events API running"));
 
 using (var scope = app.Services.CreateScope())
 {
