@@ -53,13 +53,14 @@ app.MapGet("/", () => Results.Ok("Community Events API running"));
 
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate();
-
-    if (app.Environment.IsDevelopment())
+    try
     {
-        var seedService = scope.ServiceProvider.GetRequiredService<SeedDataService>();
-        await seedService.SeedAsync();
+        var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        db.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        System.Console.WriteLine($"Migration failed: {ex.Message}");
     }
 }
 
