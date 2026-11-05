@@ -9,13 +9,13 @@ public class AppDbContext : IdentityDbContext<IdentityUser>
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-    public DbSet<Event> Events { get; set; }
-    public DbSet<Member> Members { get; set; }
-    public DbSet<Issue> Issues { get; set; }
-    public DbSet<AppTask> Tasks { get; set; }
-    public DbSet<Comment> Comments { get; set; }
-    public EventSettings? Settings { get; set; }
-    public DbSet<ActivityLog> ActivityLogs { get; set; }
+    public DbSet<Event> Events { get; set; } = null!;
+    public DbSet<Member> Members { get; set; } = null!;
+    public DbSet<Issue> Issues { get; set; } = null!;
+    public DbSet<AppTask> Tasks { get; set; } = null!;
+    public DbSet<Comment> Comments { get; set; } = null!;
+    public DbSet<EventSettings> EventSettings { get; set; } = null!;
+    public DbSet<ActivityLog> ActivityLogs { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

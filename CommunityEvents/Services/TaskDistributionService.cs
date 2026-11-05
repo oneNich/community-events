@@ -47,7 +47,7 @@ public class TaskDistributionService
         {
             var bestMember = members.OrderBy(m => memberWorkloads[m.Id]).First();
             assignments[task.Id] = bestMember.Id;
-            memberWorkloads[bestMember.Id] += task.EffortPoints + (double)task.MoneyValue;
+            memberWorkloads[bestMember.Id] += task.EffortPoints + task.MoneyValue;
         }
 
         return assignments;
