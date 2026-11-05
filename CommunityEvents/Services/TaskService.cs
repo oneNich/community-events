@@ -29,7 +29,7 @@ public class TaskService
         await _db.SaveChangesAsync();
     }
 
-    public async Task UpdateStatusAsync(int taskId, TaskStatus status)
+    public async Task UpdateStatusAsync(int taskId, AppTaskStatus status)
     {
         var task = await GetTaskAsync(taskId);
         if (task != null)
@@ -52,7 +52,7 @@ public class TaskService
     public async Task<decimal> GetMemberWorkloadAsync(int memberId, List<AppTask> allTasks)
     {
         var assignedTasks = allTasks.Where(t => t.AssignedMemberId == memberId &&
-            t.Status != TaskStatus.Completed).ToList();
+            t.Status != AppTaskStatus.Completed).ToList();
 
         var effort = assignedTasks.Sum(t => t.EffortPoints);
         var money = assignedTasks.Sum(t => t.MoneyValue);

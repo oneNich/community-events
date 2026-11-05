@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using CommunityEvents.Data;
 using CommunityEvents.Models;
 
@@ -93,8 +94,8 @@ public class SeedDataService
         }
         await _db.SaveChangesAsync();
 
-        evt.Settings = new EventSettings { EventId = evt.Id, EffortWeight = 0.5m, MoneyWeight = 0.5m };
-        _db.EventSettings.Update(evt);
+        var settings = new EventSettings { EventId = evt.Id, EffortWeight = 0.5m, MoneyWeight = 0.5m };
+        _db.EventSettings.Add(settings);
         await _db.SaveChangesAsync();
     }
 }
