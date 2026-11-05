@@ -34,6 +34,11 @@ var app = builder.Build();
 
 app.UseForwardedHeaders();
 
+if (!app.Environment.IsProduction())
+{
+    Environment.SetEnvironmentVariable("ASPNETCORE_URLS", "http://localhost:8001");
+}
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
