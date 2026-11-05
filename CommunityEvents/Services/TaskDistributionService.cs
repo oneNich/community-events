@@ -1,3 +1,4 @@
+using CommunityEvents.Data;
 using Microsoft.EntityFrameworkCore;
 using CommunityEvents.Models;
 
